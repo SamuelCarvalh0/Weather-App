@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import {Thermometer, Droplet} from 'lucide-react-native';
+import { Feather } from '@expo/vector-icons';
 
 type dateClimateProp = {
     valueClimate: string,
@@ -10,23 +10,26 @@ export default function DateClimate({valueClimate, typeDateClimate}: dateClimate
 
     return(
         <View style={styles.container}>
+            <Text
+                style={styles.textDateClimate}
+            >
+                {valueClimate}
+            </Text>
+
+            
             {typeDateClimate==='temp'?(
-                <Thermometer
-                    color="red"
-                    size={15}
-                    strokeWidth={2}
-                    fill="red"
+                <Feather
+                    name="thermometer"
+                    size={15} 
+                    color="rgb(255,0,0)"
                 />
             ):(
-                <Droplet
-                    color="aqua"
-                    size={15}
-                    strokeWidth={2}
-                    fill="aqua"
+                <Feather
+                    name="droplet"
+                    size={15} 
+                    color="rgb(0,0,255)"
                 />
             )}
-            
-            <Text style={styles.textDateClimate}>{valueClimate}</Text>
         </View>
     )
     
@@ -39,11 +42,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
 
         paddingVertical: 2,
+        width: 50,
         height: 20
     },
     textDateClimate: {
         fontSize: 12,
-        marginLeft: 2,  
-        color: "rgb(255,255,255)"
+        fontFamily: "Inter-Regular",
+        color: "rgb(30,30,30)"
     }
 })
